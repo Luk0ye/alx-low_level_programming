@@ -1,13 +1,21 @@
-#ifndef FUNCTION_POINTERS_H
-#define FUNCTION_POINTERS_H
+#include "function_pointers.h"
+#include <stdio.h>
+/**
+ * array_iterator - prints each array elem on a newl
+ * @array: array
+ * @size: how many elem to print
+ * @action: pointer to print in regular or hex
+ * Return: void
+ */
+void array_iterator(int *array, size_t size, void (*action)(int))
+{
+	unsigned int i;
 
-#include <stddef.h>
-#include <stdlib.h>
+	if (array == NULL || action == NULL)
+		return;
 
-void print_name(char *name, void (*f)(char *));
-int _putchar(char c);
-void array_iterator(int *array, size_t size, void (*action)(int));
-int int_index(int *array, int size, int (*cmp)(int));
-
-#endif
-
+	for (i = 0; i < size; i++)
+	{
+		action(array[i]);
+	}
+}
