@@ -1,24 +1,29 @@
 #include "search_algos.h"
+
 /**
- * linear_search - search lnear form in array for element
- * @array: array list
- * @size: size of the array
- * @value: value of array
+ * linear_search - Searches value in array of ints using the Linear search algo
  *
- * Return: index where user looks for
+ * @array: Array to search
+ *
+ * @size: Size of the array
+ *
+ * @value: Value to search
+ *
+ * Return: First index where value is located or -1 for NULL array
  */
 
 int linear_search(int *array, size_t size, int value)
 {
-	size_t i = 0;
+	unsigned int index;
 
-	if (array == NULL)
-		return (-1);
-
-	for (; i < size; i++)
+	for (index = 0; array && index < size; index++)
 	{
-		printf("Value checked array[%lu] = [%d]\n", i, array[i]);
-		if (array[i] == value)
-			return (i);
-	} return (-1);
+		printf("Value checked array[%d] = [%d]\n", index, array[index]);
+
+		if (array[index] == value)
+		{
+			return (index);
+		}
+	}
+	return (-1);
 }
